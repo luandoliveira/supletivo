@@ -245,9 +245,27 @@ return [
         ], */
     
 
-         ['header' => ' '],
-
+         ['header' => 'CONSULTAR '],
+         [
+            'text' => 'Nome do Aluno ',
+            'icon'    => 'fas fa-address-card',
+            'url'  => '/searchaluno',
+        ],
         [
+            'text' => 'Nome da Mãe',
+            'icon'    => 'far fa-address-card',
+            'url'  => '/searchmae',
+        ],
+
+/*         ['header' => 'CADASTRAR'],
+        [
+            'text' => 'Novo Usuário',
+            'icon'    => 'fa fa-user-plus',
+            'url'  => '/register',
+            
+        ], */
+
+       /*  [
             'text'    => 'Consultar ',
             'icon'    => 'fa fa-search',
             'submenu' => [
@@ -262,7 +280,7 @@ return [
                     'url'  => '/searchmae',
                 ],
              
-            /*     [
+                 [
                     'text'    => 'level_one',
                     'url'     => '#',
                     'submenu' => [
@@ -285,23 +303,19 @@ return [
                             ],
                         ],
                     ],
-                ], */
+                ], 
               
             ],
-        ],
+        ], */
+        ['header'=> 'CADASTRAR',
+            'can' => 'ver-form'],
         [
-            'text'    => 'Cadastrar ',
-            'icon'    => 'fas fa-fw fa-user',
+            'text' => 'Novo Usuário',
             'can'     => 'ver-form',
-            'submenu' => [
-                [
-                    'text' => 'Novo Usuário',
-                    'icon'    => 'fa fa-user-plus',
-                    'url'  => '/register',
-                    
-                ],
-  
-            ],
+            'icon'    => 'fa fa-user-plus',
+            'url'  => '/register',
+        
+   
         ],
 
 
@@ -335,6 +349,7 @@ return [
             'icon_color' => 'far fa-copyright',
             'url'        => '#',
         ], */
+
 
 
         ['header'=> ''],

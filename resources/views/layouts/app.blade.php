@@ -36,13 +36,11 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor\vendor\select2\select2.min.css">
 <!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor\daterangepicker\daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="vendor\vendor\daterangepicke\daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css\util.css">
 	<link rel="stylesheet" type="text/css" href="css\main.css">
 <!--===============================================================================================-->
-<!-- swall -->
-
 </head>
 
 <body>
@@ -56,7 +54,7 @@
 <!--===============================================================================================-->
 	<script src="vendor/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor\bootstrap\js\popper.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/vendor/select2/select2.min.js"></script>

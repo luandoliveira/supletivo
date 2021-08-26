@@ -9,15 +9,20 @@
     <img src="img/loading.gif" alt="Loading..." />
 </div>
 </div> 
-<h3 class="text-center display-4">Consultar <i class="fa fa-search" aria-hidden="true"></i> Aluno</h3>
+<h1 class="text-center display-5">Consultar Aluno &nbsp <i class = " fa fa-search " aria-hidden = " true "> </i></h1>
 <hr></hr>
 
+<br>
+<br>
       <form  class="form-inline" action="{{route('search_aluno')}}"  method="post">
+
+
       @csrf
+  
   <label class="sr-only" for="inlineFormInputName2">Name</label>
-  <input type="search" name="search_name" class="form-control mb-2 mr-sm-2" id="validationCustom01" placeholder="Nome Completo" value="{{request('search_name') }}" required>
+  <input type="search" name="search_name" class="form-control mb-2 mr-sm-2 col-md-3" id="validationCustom01" placeholder="Nome do Aluno" value="{{request('search_name') }}" required>
   <label class="sr-only"  for="inlineFormInputName2" >Data de Nascimento</label>
-  <input type="search" name="search_data" placeholder="DD/MM/AAAA" value="{{request('search_data') }}" class="form-control mb-2 mr-sm-2" id="DataNasc" name="data" maxlength="10"  onkeypress="return dateMask(this, event);">
+  <input type="search" name="search_data" placeholder="Data de Nascimento" value="{{request('search_data') }}" class="form-control mb-2 mr-sm-2" id="DataNasc" name="data" maxlength="10"  onkeypress="return dateMask(this, event);">
   <button  style="background-color:#212529;" type="submit" class="btn btn-dark mb-2">BUSCAR</button>
 </form>
 
@@ -30,14 +35,15 @@
 <table id="tabela" class="table">
   <thead id="topo" class="text-white text-center">
     <tr>
-      <th scope="col">Matrícula</th>
+      <th scope="col">Número</th>
       <th scope="col">Aluno</th>
-      <th scope="col">Nascimento</th>
+      <th scope="col">Data Nasc</th>
       <th scope="col">Nome da Mãe</th>
       <th scope="col">Disciplina</th>
       <th scope="col">Nota</th>
       <th scope="col">Resultado</th>
       <th scope="col">Município</th>
+      <th scope="col">Mês</th>
       <th scope="col">Ano</th>
     </tr>
   </thead>
@@ -52,6 +58,7 @@
       <td>{{$name->sup_nota}}</td>
       <td>{{$name->sup_resultado}}</td>
       <td>{{$name->sup_municipio}}</td>
+      <td>{{$name->sup_mes}}</td>
       <td>{{$name->sup_ano}}</td>
     </tr> 
 @endforeach
@@ -61,9 +68,6 @@
 
 
 </div>
-
-
-
 <style>
    .loader {
     position: fixed;
@@ -104,12 +108,14 @@
 
 }
 
-
+}
  </style>
 @endsection
 @section('css')
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 @endsection
 @section('js')
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -122,6 +128,21 @@ $(document).ready(function() {
     } );
 } );
 </script>
+<script>
+
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: {
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+          }
+    } );
+} );
+
+</script>
 
 <script>window.addEventListener("load", function () {
     const loader = document.querySelector(".loader");
@@ -130,6 +151,15 @@ $(document).ready(function() {
 </script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+
 <script>window.addEventListener("load", function () {
     const loader = document.querySelector(".loader");
     loader.className += " hidden"; // class "loader hidden"
@@ -240,5 +270,17 @@ event.preventDefault();
 );
  
  
-
+/* Example usage */
+$(document).ready( function () {
+    $('#tabela').dataTable( {
+        dom': 'T<"clear">lfrtip',
+        tableTools': {
+            "aButtons": [ {
+                "sExtends":    "copy_to_div",
+                "sButtonText": "Copy to div",
+                "target":      "#copy",
+            } ]
+        }
+    } );
+} );
 </script>

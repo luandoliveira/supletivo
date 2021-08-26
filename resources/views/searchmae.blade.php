@@ -2,6 +2,10 @@
 <script src="plugins\sweetalert2\sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js" integrity="sha512-yVcJYuVlmaPrv3FRfBYGbXaurHsB2cGmyHr4Rf1cxAS+IOe/tCqxWY/EoBKLoDknY4oI1BNJ1lSU2dxxGo9WDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" type="text/css" href="dist\css\skins\_all-skins.min.css">
+<link rel="stylesheet" href=https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+
+
 <!-- @extends('adminlte::page') -->
 @section('title', 'SupletivoConsulta') 
 @section('content_header')
@@ -9,17 +13,20 @@
     <img src="img/loading.gif" alt="Loading..." />
 </div>
 </div> 
-<h3 class="text-center display-4">Consultar <i class="fa fa-search" aria-hidden="true"></i> Mãe</h3>
+<h1 class="text-center display-5">Consultar Mãe &nbsp <i class = " fa fa-search " aria-hidden = " true "> </i></h1>
 <hr></hr>
+<br>
+<br>
 
       <form  class="form-inline" action="{{route('search_mae')}}"  method="post">
       @csrf
-  <label class="sr-only" for="inlineFormInputName2">Name</label>
-  <input type="search" name="search_name" class="form-control mb-2 mr-sm-2" id="validationCustom01" placeholder="Nome Completo" value="{{request('search_name') }}" required>
-  <label class="sr-only"  for="inlineFormInputName2" >Data de Nascimento</label>
+  <label class="sr-only " for="inlineFormInputName2">Name</label>
+  <input type="search" name="search_name" class="form-control mb-2 mr-sm-2 col-md-3" id="validationCustom01" placeholder="Nome da Mãe" value="{{request('search_name') }}" required>
+  <label class="sr-only"  for="inlineFormInputName2">Data de Nascimento</label>
   <button  style="background-color:#212529;" type="submit" class="btn btn-dark mb-2">BUSCAR</button>
+  
 </form>
-
+</div>
 @if ($search == null)
 
 
@@ -29,14 +36,15 @@
 <table id="tabela" class="table">
   <thead id="topo" class="text-white text-center">
     <tr>
-      <th scope="col">Matrícula</th>
+      <th scope="col">Número</th>
       <th scope="col">Aluno</th>
-      <th scope="col">Nascimento</th>
+      <th scope="col">Data Nasc</th>
       <th scope="col">Nome da Mãe</th>
       <th scope="col">Disciplina</th>
       <th scope="col">Nota</th>
       <th scope="col">Resultado</th>
       <th scope="col">Município</th>
+      <th scope="col">Mês</th>
       <th scope="col">Ano</th>
     </tr>
   </thead>
@@ -51,6 +59,7 @@
       <td>{{$name->sup_nota}}</td>
       <td>{{$name->sup_resultado}}</td>
       <td>{{$name->sup_municipio}}</td>
+      <td>{{$name->sup_mes}}</td>
       <td>{{$name->sup_ano}}</td>
     </tr> 
 @endforeach
@@ -100,7 +109,7 @@
 
 }
 
-
+}
  </style>
 @endsection
 @section('css')
@@ -110,18 +119,12 @@
 @section('js')
 <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
-  $(document).ready( function () {
-    $('#tabela').DataTable({
-
-      "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "Nenhum registro encontrado!",
-            "info": "Mostrando _PAGE_ de _PAGES_",
-            "infoEmpty": "Nenhum registro disponível",
-            "infoFiltered": "(filtered from _MAX_ total records)"
+$(document).ready(function() {
+    $('#tabela').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
         }
-
-    });
+    } );
 } );
 </script>
 
@@ -242,5 +245,17 @@ event.preventDefault();
 );
  
  
-
+/* Example usage */
+$(document).ready( function () {
+    $('#tabela').dataTable( {
+        dom': 'T<"clear">lfrtip',
+        tableTools': {
+            "aButtons": [ {
+                "sExtends":    "copy_to_div",
+                "sButtonText": "Copy to div",
+                "target":      "#copy",
+            } ]
+        }
+    } );
+} );
 </script>
