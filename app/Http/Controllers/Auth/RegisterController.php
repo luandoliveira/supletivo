@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -39,7 +40,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         // $this->middleware('guest'); // ao remover o usuario consegue acessar a pagina de register logado
-         $this->middleware('can:ver-form'); // verifca se o usuario pode acessar a pagina 
+         $this->middleware('can:ver-form'); // verifca se o usuario pode acessar a pagina
     }
 
     /**
@@ -70,5 +71,18 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
+    }
+    protected function registrar(Request $data)
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        if ($user) return back()->with('mensagem', 'Usuario cadastrado com sucesso');
+        else return back()->with('mensagem', 'Erro ao cadastrar usuario');
     }
 }

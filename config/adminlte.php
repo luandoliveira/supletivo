@@ -104,7 +104,7 @@ return [
     */
 
     'classes_auth_card' => 'card-outline card-dark',
-    'classes_auth_header' => '', 
+    'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => 'card-outline card-dark',
     'classes_auth_icon' => '',
@@ -243,7 +243,7 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ], */
-    
+
 
          ['header' => 'CONSULTAR '],
          [
@@ -262,7 +262,7 @@ return [
             'text' => 'Novo Usuário',
             'icon'    => 'fa fa-user-plus',
             'url'  => '/register',
-            
+
         ], */
 
        /*  [
@@ -279,7 +279,7 @@ return [
                     'icon'    => 'far fa-address-card',
                     'url'  => '/searchmae',
                 ],
-             
+
                  [
                     'text'    => 'level_one',
                     'url'     => '#',
@@ -303,31 +303,31 @@ return [
                             ],
                         ],
                     ],
-                ], 
-              
+                ],
+
             ],
         ], */
-        ['header'=> 'CADASTRAR',
+        ['header'=> 'ADMINISTRADOR',
             'can' => 'ver-form'],
         [
-            'text' => 'Novo Usuário',
+            'text' => 'Usuários',
             'can'     => 'ver-form',
             'icon'    => 'fa fa-user-plus',
-            'url'  => '/register',
-        
-   
+            'url'  => '/usuarios',
+
+
         ],
 
 
-    
-   
+
+
         //   ['header'=> ''],
         // [
         //     'text'        => 'Cadastrar',
         //     'route'       =>  'logout',
         //     'icon'        => 'fas fa-sign-out-alt',
         //     'label_color' => 'success',
-        //   ],  
+        //   ],
       /*   ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -399,7 +399,7 @@ return [
 
 
 
-        ['header'=> 'DETIN - SEDUC (Versão 1.0)']
+        ['header'=> 'GESI/DETIN - SEDUC (V.1.0.2)']
     ],
 
     /*
